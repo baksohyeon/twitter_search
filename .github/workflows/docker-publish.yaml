@@ -11,6 +11,7 @@ on:
   push:
     branches:
       - "main"
+      - "ygim/**"
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
