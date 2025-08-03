@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  twitter-search:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    container_name: twitter-search-app
