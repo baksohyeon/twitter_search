@@ -8,6 +8,14 @@ import { Label } from './ui/label'
 import { Checkbox } from './ui/checkbox'
 import { TooltipProvider } from './ui/tooltip'
 import { cn, generateTwitterUrl } from '@/lib/utils'
+import { 
+  trackSearchQuery, 
+  trackQueryCopy, 
+  trackTwitterOpen, 
+  trackFieldUsage, 
+  trackAdvancedToggle, 
+  trackClearAll 
+} from '@/lib/analytics'
 
 interface SearchCriteria {
   fromUser: string
@@ -80,7 +88,15 @@ const useGenerateQuery = (criteria: SearchCriteria) => {
       if (criteria.verified) parts.push('filter:verified')
       if (criteria.isRetweet) parts.push('filter:retweets')
 
-      return parts.join(' ')
+      const query = parts.join(' ')
+      
+      // Track query generation
+      if (query) {
+        const queryType = parts.length > 3 ? 'complex' : 'simple'
+        trackSearchQuery(queryType, query.length)
+      }
+
+      return query
     },
     enabled: true,
     staleTime: 0,
@@ -96,16 +112,19 @@ export default function TwitterSearchForm() {
 
   const updateCriteria = (field: keyof SearchCriteria, value: string | boolean) => {
     setCriteria(prev => ({ ...prev, [field]: value }))
+    trackFieldUsage(field)
   }
 
   const clearAll = () => {
     setCriteria(initialCriteria)
+    trackClearAll()
   }
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(query)
       setCopiedQuery(query)
+      trackQueryCopy(query.length)
       setTimeout(() => setCopiedQuery(''), 2000)
     } catch (err) {
       console.error('Failed to copy:', err)
@@ -115,6 +134,7 @@ export default function TwitterSearchForm() {
   const openInTwitter = () => {
     if (query) {
       window.open(generateTwitterUrl(query), '_blank')
+      trackTwitterOpen()
     }
   }
 
@@ -213,7 +233,11 @@ export default function TwitterSearchForm() {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setShowAdvanced(!showAdvanced)}
+                  onClick={() => {
+                    const newValue = !showAdvanced
+                    setShowAdvanced(newValue)
+                    trackAdvancedToggle(newValue)
+                  }}
                 >
                   {showAdvanced ? 'Less Options' : 'More Options'}
                 </Button>
