@@ -1,4 +1,12 @@
 {
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

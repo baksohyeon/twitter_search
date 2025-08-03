@@ -1,69 +1,111 @@
-# React + TypeScript + Vite
+# Twitter Search Query Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, user-friendly Twitter search query generator built with React, Vite, TanStack Query, and Shadcn UI.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Intuitive UI**: Clean, modern interface with Twitter-inspired design
+- **Real-time Query Generation**: Queries update automatically as you type
+- **Advanced Search Options**: Comprehensive search criteria including:
+  - User targeting (from, to, mentions)
+  - Date ranges
+  - Engagement filters (min retweets, likes, replies)
+  - Content filters (images, videos, links)
+  - Text search (exact phrases, keywords, hashtags)
+  - Account filters (verified users)
 
-## Expanding the ESLint configuration
+- **Smart Features**:
+  - One-click copy to clipboard
+  - Direct "Open in Twitter" functionality
+  - Collapsible advanced options
+  - Helpful tooltips and guidance
+  - Responsive design for all devices
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **TanStack Query** for state management
+- **Shadcn UI** for beautiful, accessible components
+- **Tailwind CSS** for styling
+- **Lucide React** for icons
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📱 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Basic Search**: Fill in the user fields and date ranges for simple searches
+2. **Advanced Options**: Click "Show Advanced Options" for more filters
+3. **Copy Query**: Click "Copy Query" to copy the generated search string
+4. **Open in Twitter**: Click "Open in Twitter" to search directly
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Example Use Cases
+
+- Find viral tweets: Set minimum retweets to 1000+
+- Search user's tweet history: Use "From User" with date range
+- Find popular content about a topic: Combine hashtags with engagement filters
+- Discover quality discussions: Use "Has Links" + minimum likes
+
+## 🎯 Query Syntax Generated
+
+The app generates standard Twitter search syntax:
+- `from:username` - Tweets by user
+- `to:username` - Tweets to user
+- `since:YYYY-MM-DD` - After date
+- `until:YYYY-MM-DD` - Before date
+- `min_retweets:N` - Minimum retweets
+- `filter:verified` - Verified accounts only
+- And many more...
+
+## 🌟 Improvements over Basic HTML Version
+
+- **Modern React Architecture**: Component-based, maintainable codebase
+- **State Management**: TanStack Query for optimal performance
+- **Accessibility**: Proper ARIA labels, keyboard navigation
+- **Mobile-First**: Responsive design that works on all devices
+- **User Experience**: Tooltips, real-time feedback, loading states
+- **Professional Design**: Shadcn UI components with consistent styling
+
+## 📦 Project Structure
+
 ```
+src/
+├── components/
+│   ├── ui/                 # Shadcn UI components
+│   └── TwitterSearchForm.tsx
+├── lib/
+│   └── utils.ts           # Utility functions
+├── App.tsx                # Main app with TanStack setup
+└── main.tsx              # Entry point
+```
+
+## 🔧 Configuration
+
+The app includes sensible defaults but can be customized:
+- Query caching via TanStack Query
+- Tailwind theme customization
+- Component variants via Shadcn UI
+
+---
+
+Built with ❤️ for better Twitter searching
