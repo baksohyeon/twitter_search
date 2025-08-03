@@ -22,11 +22,6 @@ jobs:
           echo "| key | value |" >> $GITHUB_STEP_SUMMARY
           echo "| ---- | ---- |" >> $GITHUB_STEP_SUMMARY
           echo "| github.event_name | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
-          
-      - name: Print json
-        run: |
-          echo "## json dumps" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
 
       - name: Dump GitHub context
         id: github_context_step
