@@ -15,9 +15,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <TwitterSearchForm />
-      </div>
+      <TwitterSearchForm />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
