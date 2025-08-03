@@ -1,0 +1,73 @@
+name: debug
+
+# https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+on: 
+  push: {}
+  workflow_call: {}
+  workflow_dispatch: {}
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  debug:
+    runs-on:
+      - ubuntu-latest
+
+    steps:
+      - name: Print debug
+        run: |
+          echo "# Summary Title" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| key | value |" >> $GITHUB_STEP_SUMMARY
+          echo "| ---- | ---- |" >> $GITHUB_STEP_SUMMARY
+          echo "| github.event_name | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump GitHub context
+        id: github_context_step
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(github) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump job context
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(job) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump steps context
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(steps) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump runner context
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(runner) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump strategy context
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(strategy) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Dump matrix context
+        run: |
+          echo "### Dump context" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJSON(matrix) }}' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
