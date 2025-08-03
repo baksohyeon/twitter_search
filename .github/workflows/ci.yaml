@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '40 6 * * *'
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install node modules
+        working-directory: ./twitter-search-modern/
+        run: npm ci
+
+      - name: Build static site
+        working-directory: ./twitter-search-modern/
+        run: npm run build
+
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install node modules
+        working-directory: ./twitter-search-modern/
+        run: npm install
+
+      - name: Run lint
+        working-directory: ./twitter-search-modern/
+        run: npm run lint
