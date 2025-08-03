@@ -1,6 +1,8 @@
 # Twitter Search Builder
 **30분만에 배포까지 ~ 트위터 검색 쿼리 생성기**
 
+[![CI](https://github.com/baksohyeon/twitter_search/actions/workflows/ci.yaml/badge.svg)](https://github.com/baksohyeon/twitter_search/actions/workflows/ci.yaml)
+
 ## Project Overview
 Complex Twitter/X search query builder with intuitive UI interface.
 
