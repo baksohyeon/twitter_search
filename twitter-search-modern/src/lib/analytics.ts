@@ -49,7 +49,7 @@ export const trackEvent = (
 // Enhanced page view tracking
 export const trackPageView = (pagePath?: string, pageTitle?: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'GA_MEASUREMENT_ID', {
+    window.gtag('config', 'G-XM7C3RLX18', {
       page_path: pagePath || window.location.pathname,
       page_title: pageTitle || document.title,
       page_location: window.location.href
