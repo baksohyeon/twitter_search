@@ -183,27 +183,27 @@ export default function TwitterSearchForm() {
 
   return (
     <TooltipProvider delayDuration={200} skipDelayDuration={0}>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-6">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-3 sm:p-6">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           {/* Header */}
-          <header className="text-center space-y-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl shadow-xl mb-6 transform hover:scale-105 transition-transform duration-300">
-              <Search className="h-10 w-10 text-white" />
+          <header className="text-center space-y-4 sm:space-y-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl shadow-xl mb-4 sm:mb-6 transform hover:scale-105 transition-transform duration-300">
+              <Search className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
             
-            <div className="space-y-3">
-              <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight px-2">
                 Twitter Search Builder
               </h1>
             </div>
             
 
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto px-4">
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
               </p>
               
               {/* Developer Info */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm">
                 <div className="flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm">
                   <User className="h-4 w-4 text-blue-500" />
                   <span className="text-gray-600">개발자:</span>
@@ -223,7 +223,7 @@ export default function TwitterSearchForm() {
                     href="https://github.com/baksohyeon/twitter_search" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:text-purple-800 font-medium transition-colors"
+                    className="text-purple-600 hover:text-purple-800 font-medium transition-colors break-words"
                   >
                     GitHub 소스코드
                   </a>
@@ -244,14 +244,14 @@ export default function TwitterSearchForm() {
                 원하는 조건을 입력하여 정확한 트윗을 찾아보세요
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-6 sm:space-y-8">
               {/* User & Content Section */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                   <User className="h-4 w-4" />
                   사용자 & 콘텐츠
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="fromUser" className="flex items-center gap-2">
                       <User className="h-4 w-4 text-blue-500" />
@@ -277,17 +277,17 @@ export default function TwitterSearchForm() {
                       >
                         <TooltipTrigger asChild>
                           <button 
-                            className="p-2 hover:bg-green-50 active:bg-green-100 rounded-full transition-colors touch-manipulation"
+                            className="p-3 sm:p-2 hover:bg-green-50 active:bg-green-100 rounded-full transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-auto sm:min-h-auto flex items-center justify-center"
                             aria-label="스마트 검색 사용법 보기"
                             onClick={() => setShowSmartSearchTooltip(!showSmartSearchTooltip)}
                           >
-                            <Info className="h-3 w-3 text-green-500" />
+                            <Info className="h-4 w-4 sm:h-3 sm:w-3 text-green-500" />
                           </button>
                         </TooltipTrigger>
                         <TooltipContent 
                           side="bottom" 
                           align="start"
-                          className="max-w-xs sm:max-w-md z-50"
+                          className="max-w-[280px] sm:max-w-xs md:max-w-md z-50 text-xs sm:text-sm"
                           sideOffset={8}
                           onPointerDownOutside={() => setShowSmartSearchTooltip(false)}
                           onEscapeKeyDown={() => setShowSmartSearchTooltip(false)}
@@ -313,12 +313,12 @@ export default function TwitterSearchForm() {
               </div>
 
               {/* Date & Time Section */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                   <Calendar className="h-4 w-4" />
                   날짜 범위
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="sinceDate" className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-orange-500" />
@@ -350,7 +350,7 @@ export default function TwitterSearchForm() {
               </div>
 
               {/* Engagement Section */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                   <Heart className="h-4 w-4" />
                   리액션
@@ -361,17 +361,17 @@ export default function TwitterSearchForm() {
                   >
                     <TooltipTrigger asChild>
                       <button 
-                        className="p-2 hover:bg-blue-50 active:bg-blue-100 rounded-full transition-colors touch-manipulation"
+                        className="p-3 sm:p-2 hover:bg-blue-50 active:bg-blue-100 rounded-full transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-auto sm:min-h-auto flex items-center justify-center"
                         aria-label="리액션 검색 팁 보기"
                         onClick={() => setShowReactionTooltip(!showReactionTooltip)}
                       >
-                        <Info className="h-3 w-3 text-blue-500" />
+                        <Info className="h-4 w-4 sm:h-3 sm:w-3 text-blue-500" />
                       </button>
                     </TooltipTrigger>
                     <TooltipContent 
                       side="bottom" 
                       align="start"
-                      className="max-w-xs sm:max-w-md z-50"
+                      className="max-w-[280px] sm:max-w-xs md:max-w-md z-50 text-xs sm:text-sm"
                       sideOffset={8}
                       onPointerDownOutside={() => setShowReactionTooltip(false)}
                       onEscapeKeyDown={() => setShowReactionTooltip(false)}
@@ -384,7 +384,7 @@ export default function TwitterSearchForm() {
                     </TooltipContent>
                   </Tooltip>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="minRetweets" className="flex items-center gap-2">
                       <Repeat2 className="h-4 w-4 text-green-500" />
@@ -447,14 +447,14 @@ export default function TwitterSearchForm() {
 
               {/* Advanced Options */}
               {showAdvanced && (
-                <div className="space-y-6 pt-6 animate-in slide-in-from-top-2 duration-300">
+                <div className="space-y-4 sm:space-y-6 pt-4 sm:pt-6 animate-in slide-in-from-top-2 duration-300">
                   {/* Additional Search Terms */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                       <Hash className="h-4 w-4" />
                       추가 검색 조건
                     </div>
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="hashtag" className="flex items-center gap-2">
                           <Hash className="h-4 w-4 text-blue-500" />
@@ -486,12 +486,12 @@ export default function TwitterSearchForm() {
                   </div>
 
                   {/* Content Filters */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                       <Image className="h-4 w-4" />
                       콘텐츠 필터
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                       <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
                         <Checkbox
                           id="nativeRetweets"
@@ -557,24 +557,24 @@ export default function TwitterSearchForm() {
                 완성된 검색 쿼리를 복사하여 트위터에서 사용하세요
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 sm:space-y-6">
               <div className="relative">
                 <div 
                   className={cn(
-                    "bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 font-mono text-sm min-h-[100px] flex items-center border-2 transition-all duration-200",
+                    "bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-4 sm:p-6 font-mono text-xs sm:text-sm min-h-[80px] sm:min-h-[100px] flex items-center border-2 transition-all duration-200",
                     query ? "text-foreground border-blue-200" : "text-muted-foreground border-gray-200"
                   )}
                 >
                   {query || "검색 조건을 입력하면 여기에 쿼리가 나타납니다..."}
                 </div>
                 {copiedQuery === query && query && (
-                  <div className="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium animate-in slide-in-from-top-1 duration-300">
+                  <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-green-500 text-white px-2 py-1 sm:px-3 rounded-full text-xs font-medium animate-in slide-in-from-top-1 duration-300">
                     ✓ 복사됨!
                   </div>
                 )}
               </div>
               
-              <div className="flex flex-col gap-3 w-full">
+              <div className="flex flex-col gap-2 sm:gap-3 w-full">
                 <Button 
                   onClick={copyToClipboard}
                   disabled={!query}
@@ -620,10 +620,10 @@ export default function TwitterSearchForm() {
           </Card>
 
           {/* Footer */}
-          <footer className="mt-16 pt-12 border-t border-gray-200">
-            <div className="text-center space-y-8">
+          <footer className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-200">
+            <div className="text-center space-y-6 sm:space-y-8">
               {/* Main Footer Content */}
-              <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
 
 
               </div>
@@ -632,7 +632,7 @@ export default function TwitterSearchForm() {
               <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
               {/* Bottom Footer */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-sm text-gray-500 px-4">
                 <div className="flex items-center gap-2">
                   <Heart className="h-4 w-4 text-red-500" />
                   <span>Made with love by @aguming_</span>
