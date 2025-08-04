@@ -1,6 +1,14 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
+// Network Information API type definition
+interface NetworkInformation {
+    effectiveType?: string;
+    downlink?: number;
+    rtt?: number;
+    saveData?: boolean;
+}
+
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
 }
@@ -23,7 +31,7 @@ export function generateTwitterUrl(query: string): string {
 /**
  * Debounce function for analytics events to prevent spam
  */
-export function debounceAnalytics<T extends (...args: any[]) => void>(
+export function debounceAnalytics<T extends (...args: unknown[]) => void>(
     func: T,
     delay: number = 300
 ): (...args: Parameters<T>) => void {
@@ -108,8 +116,8 @@ export function getPerformanceMetrics(): {
     // Core Web Vitals
     let firstContentfulPaint: number | null = null
     let largestContentfulPaint: number | null = null
-    let cumulativeLayoutShift: number | null = null
-    let firstInputDelay: number | null = null
+    const cumulativeLayoutShift: number | null = null
+    const firstInputDelay: number | null = null
 
     // Get FCP
     const fcpEntry = performance.getEntriesByName('first-contentful-paint')[0]
@@ -126,7 +134,7 @@ export function getPerformanceMetrics(): {
 
     try {
         observer.observe({ entryTypes: ['largest-contentful-paint'] })
-    } catch (e) {
+    } catch {
         // LCP not supported
     }
 
@@ -166,7 +174,16 @@ export function getConnectionInfo(): {
         }
     }
 
-    const connection = (navigator as any).connection
+    const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection
+    if (!connection) {
+        return {
+            effectiveType: 'unknown',
+            downlink: 0,
+            rtt: 0,
+            saveData: false
+        }
+    }
+
     return {
         effectiveType: connection.effectiveType || 'unknown',
         downlink: connection.downlink || 0,
@@ -278,7 +295,10 @@ export class AnalyticsBatcher {
     private flushInterval = 5000 // 5 seconds
     private flushTimer: ReturnType<typeof setTimeout> | null = null
 
-    constructor(private sendFunction: (events: any[]) => void) {
+    private sendFunction: (events: Array<{ eventName: string; parameters: Record<string, unknown>; timestamp: number }>) => void
+
+    constructor(sendFunction: (events: Array<{ eventName: string; parameters: Record<string, unknown>; timestamp: number }>) => void) {
+        this.sendFunction = sendFunction
         this.startFlushTimer()
     }
 
