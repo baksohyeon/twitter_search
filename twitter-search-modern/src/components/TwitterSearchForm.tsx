@@ -259,7 +259,7 @@ export default function TwitterSearchForm() {
                     </Label>
                     <Input
                       id="fromUser"
-                      placeholder="@username (@ 없이 입력)"
+                      placeholder="user id (@ 없이 입력)"
                       value={criteria.fromUser}
                       onChange={(e) => updateCriteria('fromUser', e.target.value)}
                       className="transition-all duration-200 focus:shadow-md"
@@ -574,12 +574,12 @@ export default function TwitterSearchForm() {
                 )}
               </div>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col gap-3 w-full">
                 <Button 
                   onClick={copyToClipboard}
                   disabled={!query}
                   size="lg"
-                  className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-200"
                 >
                   <Copy className="h-4 w-4" />
                   쿼리 복사
@@ -590,7 +590,7 @@ export default function TwitterSearchForm() {
                   disabled={!query}
                   variant="outline"
                   size="lg"
-                  className="flex items-center gap-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200"
                 >
                   <ExternalLink className="h-4 w-4" />
                   트위터에서 열기
@@ -600,7 +600,7 @@ export default function TwitterSearchForm() {
                   onClick={clearAll}
                   variant="outline"
                   size="lg"
-                  className="flex items-center gap-2 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 hover:text-red-600 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 hover:text-red-600 transition-all duration-200"
                 >
                   <RotateCcw className="h-4 w-4" />
                   전체 초기화
