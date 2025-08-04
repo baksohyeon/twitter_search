@@ -148,6 +148,8 @@ export default function TwitterSearchForm() {
   const [criteria, setCriteria] = useState<SearchCriteria>(initialCriteria)
   const [copiedQuery, setCopiedQuery] = useState('')
   const [showAdvanced, setShowAdvanced] = useState(false)
+  const [showSmartSearchTooltip, setShowSmartSearchTooltip] = useState(false)
+  const [showReactionTooltip, setShowReactionTooltip] = useState(false)
   
   const { data: query = '' } = useGenerateQuery(criteria)
 
@@ -180,7 +182,7 @@ export default function TwitterSearchForm() {
   }
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={200} skipDelayDuration={0}>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-6">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Header */}
@@ -190,7 +192,7 @@ export default function TwitterSearchForm() {
             </div>
             
             <div className="space-y-3">
-              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
                 Twitter Search Builder
               </h1>
             </div>
@@ -268,16 +270,28 @@ export default function TwitterSearchForm() {
                     <Label htmlFor="smartSearch" className="flex items-center gap-2">
                       <MessageSquare className="h-4 w-4 text-green-500" />
                       스마트 검색
-                      <Tooltip>
+                      <Tooltip 
+                        open={showSmartSearchTooltip} 
+                        onOpenChange={setShowSmartSearchTooltip}
+                        delayDuration={300}
+                      >
                         <TooltipTrigger asChild>
                           <button 
-                            className="p-1 hover:bg-green-50 rounded-full transition-colors"
+                            className="p-2 hover:bg-green-50 active:bg-green-100 rounded-full transition-colors touch-manipulation"
                             aria-label="스마트 검색 사용법 보기"
+                            onClick={() => setShowSmartSearchTooltip(!showSmartSearchTooltip)}
                           >
                             <Info className="h-3 w-3 text-green-500" />
                           </button>
                         </TooltipTrigger>
-                        <TooltipContent side="top" className="max-w-md">
+                        <TooltipContent 
+                          side="bottom" 
+                          align="start"
+                          className="max-w-xs sm:max-w-md z-50"
+                          sideOffset={8}
+                          onPointerDownOutside={() => setShowSmartSearchTooltip(false)}
+                          onEscapeKeyDown={() => setShowSmartSearchTooltip(false)}
+                        >
                           <div className="text-xs leading-relaxed space-y-1">
                             <p><strong>사용법:</strong> 쉼표(,)로 구분하면 OR 조건으로 검색</p>
                             <p><strong>예시:</strong></p>
@@ -340,19 +354,31 @@ export default function TwitterSearchForm() {
                 <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 border-b pb-2">
                   <Heart className="h-4 w-4" />
                   리액션
-                  <Tooltip>
+                  <Tooltip 
+                    open={showReactionTooltip} 
+                    onOpenChange={setShowReactionTooltip}
+                    delayDuration={300}
+                  >
                     <TooltipTrigger asChild>
                       <button 
-                        className="p-1 hover:bg-blue-50 rounded-full transition-colors"
+                        className="p-2 hover:bg-blue-50 active:bg-blue-100 rounded-full transition-colors touch-manipulation"
                         aria-label="리액션 검색 팁 보기"
+                        onClick={() => setShowReactionTooltip(!showReactionTooltip)}
                       >
                         <Info className="h-3 w-3 text-blue-500" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="max-w-xs">
+                    <TooltipContent 
+                      side="bottom" 
+                      align="start"
+                      className="max-w-xs sm:max-w-md z-50"
+                      sideOffset={8}
+                      onPointerDownOutside={() => setShowReactionTooltip(false)}
+                      onEscapeKeyDown={() => setShowReactionTooltip(false)}
+                    >
                       <p className="text-xs leading-relaxed">
                         <strong>팁:</strong> min_retweets:1 을 매크로넣어서 검색어 뒤에 붙여보세요. 
-                        아무래도 성매매계정은 알티가 안되기마련이라 이러면 걸러지더라구요. 
+                        아무래도 스팸 계정은 알티가 안되기마련이라 이러면 걸러지더라구요. 
                         알티못받은 트윗 못보게되지만… 일단 검색이라는게 가능해집니다.
                       </p>
                     </TooltipContent>
