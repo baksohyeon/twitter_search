@@ -272,6 +272,15 @@ export default function TwitterSearchForm() {
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     <div className="flex items-center space-x-2">
                       <Checkbox
+                        id="nativeRetweets"
+                        checked={criteria.nativeRetweets}
+                        onCheckedChange={(checked) => updateCriteria('nativeRetweets', !!checked)}
+                      />
+                      <Label htmlFor="nativeRetweets" className="text-sm">리트윗만 보기</Label>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
                         id="hasImages"
                         checked={criteria.hasImages}
                         onCheckedChange={(checked) => updateCriteria('hasImages', !!checked)}
