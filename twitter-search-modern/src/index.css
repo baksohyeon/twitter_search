@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-border: hsl(0 0% 90%);
-  --color-input: hsl(0 0% 98%);
-  --color-ring: hsl(210 100% 60%);
+  --color-border: hsl(0 0% 92%);
+  --color-input: hsl(0 0% 100%);
+  --color-ring: hsl(212 100% 48%);
   --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(0 0% 20%);
-  --color-primary: hsl(210 100% 60%);
+  --color-foreground: hsl(0 0% 9%);
+  --color-primary: hsl(212 100% 48%);
   --color-primary-foreground: hsl(0 0% 100%);
   --color-secondary: hsl(0 0% 97%);
-  --color-secondary-foreground: hsl(0 0% 30%);
+  --color-secondary-foreground: hsl(0 0% 9%);
   --color-destructive: hsl(0 84% 60%);
   --color-destructive-foreground: hsl(0 0% 100%);
-  --color-muted: hsl(0 0% 96%);
-  --color-muted-foreground: hsl(0 0% 55%);
-  --color-accent: hsl(0 0% 97%);
-  --color-accent-foreground: hsl(0 0% 20%);
+  --color-muted: hsl(0 0% 98%);
+  --color-muted-foreground: hsl(0 0% 46%);
+  --color-accent: hsl(0 0% 98%);
+  --color-accent-foreground: hsl(0 0% 9%);
   --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(0 0% 20%);
+  --color-popover-foreground: hsl(0 0% 9%);
   --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(0 0% 20%);
+  --color-card-foreground: hsl(0 0% 9%);
   
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   --border-radius-lg: var(--radius);
   --border-radius-md: calc(var(--radius) - 2px);
   --border-radius-sm: calc(var(--radius) - 4px);
@@ -100,7 +100,7 @@
 
   /* Focus states - Apple style */
   input:focus {
-    box-shadow: 0 0 0 3px hsl(210 100% 60% / 0.15);
+    box-shadow: 0 0 0 3px hsl(212 100% 48% / 0.15);
   }
 
   /* Mobile optimizations */
@@ -135,6 +135,152 @@
 
   /* Improved tap highlighting */
   * {
-    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+    -webkit-tap-highlight-color: rgba(0, 122, 255, 0.1);
+  }
+
+  /* Safari-specific optimizations */
+  @supports (-webkit-backdrop-filter: blur(10px)) {
+    .backdrop-blur-sm {
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  /* Safari gradient text fix */
+  @supports (-webkit-background-clip: text) {
+    .bg-clip-text {
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* Safari flexbox fixes */
+  .flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .flex-col {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .items-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .justify-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+
+  .justify-between {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+  }
+
+  /* Safari grid fixes */
+  .grid {
+    display: -ms-grid;
+    display: grid;
+  }
+
+  /* Safari transform fixes */
+  .transform {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Safari border-radius fixes */
+  .rounded-xl {
+    -webkit-border-radius: 0.75rem;
+    border-radius: 0.75rem;
+  }
+
+  .rounded-3xl {
+    -webkit-border-radius: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .rounded-full {
+    -webkit-border-radius: 9999px;
+    border-radius: 9999px;
+  }
+
+  /* Safari transition fixes */
+  .transition-all {
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .transition-colors {
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+
+  .transition-transform {
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+  }
+
+  /* Safari animation fixes */
+  .hover\:scale-105:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  /* Safari z-index stacking context fix */
+  .relative {
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Safari input appearance fixes */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+  }
+
+  /* Safari button fixes */
+  button {
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Safari shadow fixes */
+  .shadow-lg {
+    -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-xl {
+    -webkit-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+
+  /* Fix for Safari's rendering performance */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* Safari scroll fix */
+  .overflow-x-hidden {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 }

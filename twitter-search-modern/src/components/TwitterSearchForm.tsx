@@ -183,16 +183,16 @@ export default function TwitterSearchForm() {
 
   return (
     <TooltipProvider delayDuration={200} skipDelayDuration={0}>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-3 sm:p-6">
+      <div className="min-h-screen bg-gray-50 p-3 sm:p-6">
         <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           {/* Header */}
           <header className="text-center space-y-4 sm:space-y-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl shadow-xl mb-4 sm:mb-6 transform hover:scale-105 transition-transform duration-300">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-2xl shadow-lg mb-4 sm:mb-6">
               <Search className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
             
             <div className="space-y-2 sm:space-y-3">
-              <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight px-2">
+              <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold text-gray-900 leading-tight px-2">
                 Twitter Search Builder
               </h1>
             </div>
@@ -204,7 +204,7 @@ export default function TwitterSearchForm() {
               
               {/* Developer Info */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm">
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full shadow-sm">
                   <User className="h-4 w-4 text-blue-500" />
                   <span className="text-gray-600">개발자:</span>
                   <a 
@@ -217,7 +217,7 @@ export default function TwitterSearchForm() {
                   </a>
                 </div>
                 
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/80 rounded-full shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full shadow-sm">
                   <ExternalLink className="h-4 w-4 text-purple-500" />
                   <a 
                     href="https://github.com/baksohyeon/twitter_search" 
@@ -234,7 +234,7 @@ export default function TwitterSearchForm() {
 
 
           {/* Main Form */}
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+          <Card className="border shadow-sm bg-white">
             <CardHeader>
               <CardTitle className="text-xl flex items-center gap-2">
                 <MessageSquare className="h-5 w-5 text-blue-500" />
@@ -277,7 +277,7 @@ export default function TwitterSearchForm() {
                       >
                         <TooltipTrigger asChild>
                           <button 
-                            className="p-3 sm:p-2 hover:bg-green-50 active:bg-green-100 rounded-full transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-auto sm:min-h-auto flex items-center justify-center"
+                            className="p-2 hover:bg-gray-50 rounded-full transition-colors"
                             aria-label="스마트 검색 사용법 보기"
                             onClick={() => setShowSmartSearchTooltip(!showSmartSearchTooltip)}
                           >
@@ -361,7 +361,7 @@ export default function TwitterSearchForm() {
                   >
                     <TooltipTrigger asChild>
                       <button 
-                        className="p-3 sm:p-2 hover:bg-blue-50 active:bg-blue-100 rounded-full transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-auto sm:min-h-auto flex items-center justify-center"
+                        className="p-2 hover:bg-gray-50 rounded-full transition-colors"
                         aria-label="리액션 검색 팁 보기"
                         onClick={() => setShowReactionTooltip(!showReactionTooltip)}
                       >
@@ -429,7 +429,7 @@ export default function TwitterSearchForm() {
                     setShowAdvanced(newValue)
                     trackAdvancedToggle(newValue)
                   }}
-                  className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 hover:bg-gray-50 transition-all duration-200"
                 >
                   {showAdvanced ? (
                     <>
@@ -492,7 +492,7 @@ export default function TwitterSearchForm() {
                       콘텐츠 필터
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
+                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-50 transition-all duration-200">
                         <Checkbox
                           id="nativeRetweets"
                           checked={criteria.nativeRetweets}
@@ -504,7 +504,7 @@ export default function TwitterSearchForm() {
                         </Label>
                       </div>
 
-                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
+                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-50 transition-all duration-200">
                         <Checkbox
                           id="hasImages"
                           checked={criteria.hasImages}
@@ -516,7 +516,7 @@ export default function TwitterSearchForm() {
                         </Label>
                       </div>
 
-                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
+                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-50 transition-all duration-200">
                         <Checkbox
                           id="hasVideos"
                           checked={criteria.hasVideos}
@@ -528,7 +528,7 @@ export default function TwitterSearchForm() {
                         </Label>
                       </div>
 
-                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
+                      <div className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-gray-50 transition-all duration-200">
                         <Checkbox
                           id="hasLinks"
                           checked={criteria.hasLinks}
@@ -547,7 +547,7 @@ export default function TwitterSearchForm() {
           </Card>
 
           {/* Generated Query Display */}
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+          <Card className="border shadow-sm bg-white">
             <CardHeader>
               <CardTitle className="text-xl flex items-center gap-2">
                 <Search className="h-5 w-5 text-purple-500" />
@@ -561,7 +561,7 @@ export default function TwitterSearchForm() {
               <div className="relative">
                 <div 
                   className={cn(
-                    "bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-4 sm:p-6 font-mono text-xs sm:text-sm min-h-[80px] sm:min-h-[100px] flex items-center border-2 transition-all duration-200",
+                    "bg-gray-50 rounded-xl p-4 sm:p-6 font-mono text-xs sm:text-sm min-h-[80px] sm:min-h-[100px] flex items-center border transition-all duration-200",
                     query ? "text-foreground border-blue-200" : "text-muted-foreground border-gray-200"
                   )}
                 >
@@ -579,7 +579,7 @@ export default function TwitterSearchForm() {
                   onClick={copyToClipboard}
                   disabled={!query}
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 transition-all duration-200"
                 >
                   <Copy className="h-4 w-4" />
                   쿼리 복사
@@ -590,7 +590,7 @@ export default function TwitterSearchForm() {
                   disabled={!query}
                   variant="outline"
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 hover:bg-gray-50 transition-all duration-200"
                 >
                   <ExternalLink className="h-4 w-4" />
                   트위터에서 열기
@@ -600,7 +600,7 @@ export default function TwitterSearchForm() {
                   onClick={clearAll}
                   variant="outline"
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 hover:text-red-600 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
                 >
                   <RotateCcw className="h-4 w-4" />
                   전체 초기화
@@ -629,7 +629,7 @@ export default function TwitterSearchForm() {
               </div>
 
               {/* Divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+              <div className="w-full h-px bg-gray-300"></div>
 
               {/* Bottom Footer */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-sm text-gray-500 px-4">
