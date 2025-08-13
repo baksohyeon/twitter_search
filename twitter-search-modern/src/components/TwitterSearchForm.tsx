@@ -187,12 +187,12 @@ export default function TwitterSearchForm() {
         <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           {/* Header */}
           <header className="text-center space-y-4 sm:space-y-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-2xl shadow-lg mb-4 sm:mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-xl shadow-sm mb-4 sm:mb-6">
               <Search className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
             
             <div className="space-y-2 sm:space-y-3">
-              <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold text-gray-900 leading-tight px-2">
+              <h1 className="text-2xl sm:text-3xl md:text-6xl font-semibold text-gray-900 leading-tight px-2">
                 Twitter Search Builder
               </h1>
             </div>
@@ -204,26 +204,26 @@ export default function TwitterSearchForm() {
               
               {/* Developer Info */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm">
-                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-gray-200">
                   <User className="h-4 w-4 text-blue-500" />
                   <span className="text-gray-600">개발자:</span>
                   <a 
                     href="https://x.com/aguming_" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                    className="text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     @aguming_
                   </a>
                 </div>
                 
-                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-gray-200">
                   <ExternalLink className="h-4 w-4 text-purple-500" />
                   <a 
                     href="https://github.com/baksohyeon/twitter_search" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:text-purple-800 font-medium transition-colors break-words"
+                    className="text-blue-600 hover:text-blue-700 transition-colors break-words"
                   >
                     GitHub 소스코드
                   </a>
@@ -234,9 +234,9 @@ export default function TwitterSearchForm() {
 
 
           {/* Main Form */}
-          <Card className="border shadow-sm bg-white">
+          <Card className="border border-gray-200 shadow-sm bg-white">
             <CardHeader>
-              <CardTitle className="text-xl flex items-center gap-2">
+              <CardTitle className="text-lg flex items-center gap-2">
                 <MessageSquare className="h-5 w-5 text-blue-500" />
                 검색 조건 설정
               </CardTitle>
@@ -262,7 +262,7 @@ export default function TwitterSearchForm() {
                       placeholder="user id (@ 없이 입력)"
                       value={criteria.fromUser}
                       onChange={(e) => updateCriteria('fromUser', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
 
@@ -306,7 +306,7 @@ export default function TwitterSearchForm() {
                       placeholder='고양이, 개, 강아지'
                       value={criteria.smartSearch}
                       onChange={(e) => updateCriteria('smartSearch', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function TwitterSearchForm() {
                       type="date"
                       value={criteria.sinceDate}
                       onChange={(e) => updateCriteria('sinceDate', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
 
@@ -343,7 +343,7 @@ export default function TwitterSearchForm() {
                       type="date"
                       value={criteria.untilDate}
                       onChange={(e) => updateCriteria('untilDate', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -397,7 +397,7 @@ export default function TwitterSearchForm() {
                       min="0"
                       value={criteria.minRetweets}
                       onChange={(e) => updateCriteria('minRetweets', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
 
@@ -413,7 +413,7 @@ export default function TwitterSearchForm() {
                       min="0"
                       value={criteria.minLikes}
                       onChange={(e) => updateCriteria('minLikes', e.target.value)}
-                      className="transition-all duration-200 focus:shadow-md"
+                      className="transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -465,7 +465,7 @@ export default function TwitterSearchForm() {
                           placeholder="AI (# 없이 입력)"
                           value={criteria.hashtag}
                           onChange={(e) => updateCriteria('hashtag', e.target.value)}
-                          className="transition-all duration-200 focus:shadow-md"
+                          className="transition-all duration-200"
                         />
                       </div>
 
@@ -479,7 +479,7 @@ export default function TwitterSearchForm() {
                           placeholder="스팸 광고"
                           value={criteria.excludeWords}
                           onChange={(e) => updateCriteria('excludeWords', e.target.value)}
-                          className="transition-all duration-200 focus:shadow-md"
+                          className="transition-all duration-200"
                         />
                       </div>
                     </div>
@@ -547,9 +547,9 @@ export default function TwitterSearchForm() {
           </Card>
 
           {/* Generated Query Display */}
-          <Card className="border shadow-sm bg-white">
+          <Card className="border border-gray-200 shadow-sm bg-white">
             <CardHeader>
-              <CardTitle className="text-xl flex items-center gap-2">
+              <CardTitle className="text-lg flex items-center gap-2">
                 <Search className="h-5 w-5 text-purple-500" />
                 생성된 검색 쿼리
               </CardTitle>
@@ -562,7 +562,7 @@ export default function TwitterSearchForm() {
                 <div 
                   className={cn(
                     "bg-gray-50 rounded-xl p-4 sm:p-6 font-mono text-xs sm:text-sm min-h-[80px] sm:min-h-[100px] flex items-center border transition-all duration-200",
-                    query ? "text-foreground border-blue-200" : "text-muted-foreground border-gray-200"
+                    query ? "text-gray-900 border-gray-300" : "text-gray-500 border-gray-200"
                   )}
                 >
                   {query || "검색 조건을 입력하면 여기에 쿼리가 나타납니다..."}
